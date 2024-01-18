@@ -1,2 +1,3 @@
 # snake
-https://jarrod-vdh.github.io/snake/
+[Play now
+](https://starpork-studios.github.io/snake/)
