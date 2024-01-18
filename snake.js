@@ -125,6 +125,9 @@ function handleFrameChange() {
   directionChangeScheduled = false;
 }
 
+//the items in direction queue are essentially gates, 
+//whenever a snake segment lands on this gate its direction changes 
+// to the direction set by the gate
 function addToDirectionQueue(direction) {
   const item = {
     x: snakeBodyState[0].x,
@@ -134,6 +137,8 @@ function addToDirectionQueue(direction) {
   directionQueue.push(item);
 }
 
+//check if any snake segments are on direction change gates and change their direction
+//if any direction change gates lie outside of the snake body then the gate will be removed
 function updateSegmentDirections() {
   snakeBodyState.forEach((snakeSegment, segIndex) => {
     directionQueue.forEach((directionItem) => {
@@ -149,7 +154,6 @@ function updateSegmentDirections() {
     return snakeBodyState.some((seg) => seg.x === dir.x && seg.y === dir.y);
   });
   directionQueue = newQueue;
-
 }
 
 document.addEventListener("keydown", function (event) {
